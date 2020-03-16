@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // compile project(':refdiff-js')
+    compile project(':refdiff-java')
+    compile project(':refdiff-c')
+	compile 'com.sparkjava:spark-core:2.8.0'
+	compile 'com.google.code.gson:gson:2.8.5'
+}
+
+
+task server(type: JavaExec) {
+  classpath sourceSets.test.runtimeClasspath
+  main = 'refdiff.server.RefDiffServer'
+  //args = ["/d/refdiff/"]
+}
