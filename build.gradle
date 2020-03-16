@@ -2,6 +2,11 @@ plugins {
     id 'io.codearte.nexus-staging' version '0.8.0'
 }
 
+apply plugin: "maven"
+
+group = "org.refdiff"
+version = "1.0-SNAPSHOT"
+
 subprojects {
     repositories {
         mavenCentral()
