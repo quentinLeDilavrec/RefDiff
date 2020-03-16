@@ -7,7 +7,7 @@ import refdiff.core.diff.CstDiff;
 import refdiff.core.diff.Relationship;
 import refdiff.parsers.c.CPlugin;
 import refdiff.parsers.java.JavaPlugin;
-import refdiff.parsers.js.JsPlugin;
+// import refdiff.parsers.js.JsPlugin;
 
 public class RefDiffExample {
 	
@@ -19,30 +19,30 @@ public class RefDiffExample {
 		// This is a temp folder to clone or checkout git repositories.
 		File tempFolder = new File("temp");
 		
-		// Creates a RefDiff instance configured with the JavaScript plugin.
-		JsPlugin jsPlugin = new JsPlugin();
-		RefDiff refDiffJs = new RefDiff(jsPlugin);
+		// // Creates a RefDiff instance configured with the JavaScript plugin.
+		// JsPlugin jsPlugin = new JsPlugin();
+		// RefDiff refDiffJs = new RefDiff(jsPlugin);
 		
-		// Clone the angular.js GitHub repo.
-		File angularJsRepo = refDiffJs.cloneGitRepository(
-			new File(tempFolder, "angular.js"),
-			"https://github.com/refdiff-study/angular.js.git");
+		// // Clone the angular.js GitHub repo.
+		// File angularJsRepo = refDiffJs.cloneGitRepository(
+		// 	new File(tempFolder, "angular.js"),
+		// 	"https://github.com/refdiff-study/angular.js.git");
 		
-		// You can compute the relationships between the code elements in a commit with
-		// its previous commit. The result of this operation is a CstDiff object, which
-		// contains all relationships between CstNodes. Relationships whose type is different
-		// from RelationshipType.SAME are refactorings.
-		CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
-		printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
+		// // You can compute the relationships between the code elements in a commit with
+		// // its previous commit. The result of this operation is a CstDiff object, which
+		// // contains all relationships between CstNodes. Relationships whose type is different
+		// // from RelationshipType.SAME are refactorings.
+		// CstDiff diffForCommit = refDiffJs.computeDiffForCommit(angularJsRepo, "2636105");
+		// printRefactorings("Refactorings found in angular.js 2636105", diffForCommit);
 		
-		// You can also mine refactoring from the commit history. In this example we navigate
-		// the commit graph backwards up to 5 commits. Merge commits are skipped.
-		refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
-			printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
-		});
+		// // You can also mine refactoring from the commit history. In this example we navigate
+		// // the commit graph backwards up to 5 commits. Merge commits are skipped.
+		// refDiffJs.computeDiffForCommitHistory(angularJsRepo, 5, (commit, diff) -> {
+		// 	printRefactorings("Refactorings found in angular.js " + commit.getId().name(), diff);
+		// });
 		
-		// The JsPlugin initializes JavaScript runtime to run the Babel parser. We should close it shut down.
-		jsPlugin.close();
+		// // The JsPlugin initializes JavaScript runtime to run the Babel parser. We should close it shut down.
+		// jsPlugin.close();
 		
 		
 		// In this example, we use the plugin for C.
